@@ -2,10 +2,10 @@
   "swagger": "2.0",
   "info": {
     "title": "The Ultimate Music Database",
-    "description": "The final project for CSE341",
+    "description": "cse341 Team Project 2",
     "version": "1.0.0"
   },
-  "host": "cse341-tumd.onrender.com",
+  "host": "https://music-database-8xq0.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -23,7 +23,7 @@
         "tags": [
           "Home"
         ],
-        "description": "This is the home page. It does not do much; atleast not so far.",
+        "description": "This is the home page. It doesn't do much; at least not so far.",
         "parameters": [],
         "responses": {
           "200": {

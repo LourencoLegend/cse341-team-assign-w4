@@ -6,8 +6,8 @@ for (let i = 1; i <= 2; i++) {
   if (i == 1) {
     doc = {
       info: {
-        title: 'The Ultimate Music Database',
-        description: 'The final project for CSE341',
+        title: 'Music Database',
+        description: 'cse341 Team Project 2',
       },
       host: 'localhost:3000',
       schemes: ['http'],
@@ -21,7 +21,7 @@ for (let i = 1; i <= 2; i++) {
         title: 'The Ultimate Music Database',
         description: 'The final project for CSE341',
       },
-      host: 'cse341-tumd.onrender.com',
+      host: 'https://music-database-8xq0.onrender.com',
       schemes: ['https'],
     };
 
