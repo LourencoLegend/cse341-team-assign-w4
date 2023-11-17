@@ -1,0 +1,733 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "The Ultimate Music Database",
+    "description": "The final project for CSE341",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/profile": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "description": "This is the home page. It does not do much; atleast not so far.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/front/home": {
+      "get": {
+        "tags": [
+          "Front"
+        ],
+        "description": "Home page of the front endpoint",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/songs": {
+      "get": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Get list of all songs",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Insert new song to the collection",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "title",
+                "release_year",
+                "rating",
+                "summary",
+                "artist"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Some title..."
+                },
+                "release_year": {
+                  "type": "string",
+                  "example": "Some release year..."
+                },
+                "rating": {
+                  "type": "number",
+                  "example": "Some rating..."
+                },
+                "summary": {
+                  "type": "string",
+                  "example": "Some summary..."
+                },
+                "artist": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/songs/{song_id}": {
+      "get": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Get a specific song by song_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "song_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the song to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Updates a song specified by song_id",
+        "parameters": [
+          {
+            "name": "song_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the song to update"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "title",
+                "release_year",
+                "rating",
+                "summary",
+                "artist"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Some title..."
+                },
+                "release_year": {
+                  "type": "string",
+                  "example": "Some release year..."
+                },
+                "rating": {
+                  "type": "number",
+                  "example": "Some rating..."
+                },
+                "summary": {
+                  "type": "string",
+                  "example": "Some summary..."
+                },
+                "artist": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Deletes a song specified by song_id",
+        "parameters": [
+          {
+            "name": "song_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the song to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/songs/genre/{genre_id}": {
+      "get": {
+        "tags": [
+          "Song"
+        ],
+        "description": "Get a list of songs by genre_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "genre_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the genre to retrieve songs of"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/artists": {
+      "get": {
+        "tags": [
+          "Artist"
+        ],
+        "description": "Get list of all artists",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Artist"
+        ],
+        "description": "Insert new artist to the collection",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "first_name",
+                "last_name",
+                "date_of_birth"
+              ],
+              "properties": {
+                "first_name": {
+                  "type": "string",
+                  "example": "Some name..."
+                },
+                "last_name": {
+                  "type": "string",
+                  "example": "Some last name..."
+                },
+                "date_of_birth": {
+                  "type": "date",
+                  "example": "Some birth date..."
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "Some gender..."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/artists/{artist_id}": {
+      "get": {
+        "tags": [
+          "Artist"
+        ],
+        "description": "Get a specific artist by artist_id",
+        "parameters": [
+          {
+            "name": "artist_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the artist to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Artist"
+        ],
+        "description": "Updates a artist specified by artist_id",
+        "parameters": [
+          {
+            "name": "artist_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "artist_id",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": [
+                "first_name",
+                "last_name",
+                "date_of_birth"
+              ],
+              "properties": {
+                "first_name": {
+                  "type": "string",
+                  "example": "Some first name..."
+                },
+                "last_name": {
+                  "type": "string",
+                  "example": "Some last name..."
+                },
+                "date_of_birth": {
+                  "type": "date",
+                  "example": "Some birth date..."
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "Some gender..."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Artist"
+        ],
+        "description": "Deletes a artist specified by artist_id",
+        "parameters": [
+          {
+            "name": "artist_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the artist to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": [
+          "Review"
+        ],
+        "description": "Get list of all reviews",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Review"
+        ],
+        "description": "Insert new review to the collection",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "body",
+                "rating",
+                "user"
+              ],
+              "properties": {
+                "body": {
+                  "type": "string",
+                  "example": "Some title..."
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4.5
+                },
+                "user": {
+                  "type": "string"
+                },
+                "song": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/reviews/{review_id}": {
+      "get": {
+        "tags": [
+          "Review"
+        ],
+        "description": "Get a specific review by review_id",
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the review to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Review"
+        ],
+        "description": "Updates a review specified by review_id",
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the review to retrieve"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "body",
+                "rating",
+                "user"
+              ],
+              "properties": {
+                "body": {
+                  "type": "string",
+                  "example": "Some title..."
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4.5
+                },
+                "user": {
+                  "type": "string"
+                },
+                "song": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Review"
+        ],
+        "description": "Deletes a review specified by review_id",
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the review to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/genres": {
+      "get": {
+        "tags": [
+          "Genre"
+        ],
+        "description": "Get list of all genres",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Genre"
+        ],
+        "description": "Insert new genre to the collection",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Some title..."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/genres/{genre_id}": {
+      "get": {
+        "tags": [
+          "Genre"
+        ],
+        "description": "Get a specific genre by genre_id",
+        "parameters": [
+          {
+            "name": "genre_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the genre to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Genre"
+        ],
+        "description": "Updates a genre specified by genre_id",
+        "parameters": [
+          {
+            "name": "genre_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the genre to update"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Some title..."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Genre"
+        ],
+        "description": "Deletes a genre specified by genre_id",
+        "parameters": [
+          {
+            "name": "genre_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the genre to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get list of all users. Only displays fields that can be considered safe for public. Fields like email address, etc are skipped",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get a specific user by user_id",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the user to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
+}
